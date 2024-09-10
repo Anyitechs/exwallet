@@ -11,8 +11,14 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
+        tabBarActiveTintColor: '#334b57',
+        tabBarInactiveTintColor: '#CDCDE0',
+        tabBarStyle: {
+          backgroundColor: '#FFFFFF',
+          borderTopWidth: 3,
+          borderTopColor: '#FAF9F6',
+          height: 84,
+        },
       }}>
       <Tabs.Screen
         name="index"
@@ -24,11 +30,22 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="exchange"
         options={{
-          title: 'Explore',
+          title: 'Exchange',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
+            <TabBarIcon name={focused ? 'swap-horizontal' : 'swap-horizontal-outline'} 
+            color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="settings"
+        options={{
+          title: 'Settings',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name={focused ? 'settings' : 'settings-outline'} 
+            color={color} />
           ),
         }}
       />
