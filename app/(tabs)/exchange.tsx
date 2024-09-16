@@ -95,7 +95,7 @@ const Exchange = () => {
     );
   }
 
-  const handleOpenOfferDetails = (offer) => {
+  const handleOpenOfferDetails = (offer: any) => {
     setUserOffer(offer)
     router.push("/exchangeDetails")
   };
@@ -110,7 +110,7 @@ const Exchange = () => {
   )
 
 
-  const convertAmount = (e) => {
+  const convertAmount = (e: any) => {
     const parseAmount = parseInt(e);
     setSendDetails({
       amount: e,
@@ -209,7 +209,7 @@ const Exchange = () => {
                     title={`You send (${selectedOffer?.data.payin.currencyCode})`}
                     placeholder='Enter amount'
                     value={sendDetails.amount}
-                    handleChangeText={(e) => {
+                    handleChangeText={(e: any) => {
                       
                       convertAmount(e)
                     }}
@@ -250,11 +250,11 @@ const Exchange = () => {
                       </View>
                     </>
                   ))}
-                  <View className='mb-4'>
+                  {/* <View className='mb-4'>
                     <CustomButton
                       title='Proceed'
                     />
-                  </View>
+                  </View> */}
                 </View>
               </BottomSheetView>
             </BottomSheetModal>

@@ -49,6 +49,8 @@ const Welcome = () => {
 
             if (result.success) {
                 await saveItem('userId', result.data.id);
+                await saveItem('did', JSON.stringify(result.data.did));
+                await saveItem('vc', JSON.stringify(result.data.vc));
                 router.push('/home')
             } else {
                 setUserDetails({
@@ -130,14 +132,14 @@ const Welcome = () => {
                         title='Your Name'
                         placeholder='Enter your name'
                         value={userDetails.customerName}
-                        handleChangeText={(e) => setUserDetails({ ...userDetails, customerName: e })}
+                        handleChangeText={(e: any) => setUserDetails({ ...userDetails, customerName: e })}
                     />
 
                     <FormField
                         title='Location'
                         placeholder='Enter your country code. e.g NGN'
                         value={userDetails.countryCode}
-                        handleChangeText={(e) => setUserDetails({ ...userDetails, countryCode: e })}
+                        handleChangeText={(e: any) => setUserDetails({ ...userDetails, countryCode: e })}
                     />
 
                     <View className='mx-4 mt-4'>

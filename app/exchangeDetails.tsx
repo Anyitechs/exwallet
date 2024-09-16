@@ -42,7 +42,7 @@ const ExchangeDetails = () => {
 
 
 
-    const convertAmount = (e) => {
+    const convertAmount = (e: any) => {
         const parseAmount = parseInt(e);
         setSendDetails({
           amount: e,
@@ -135,7 +135,7 @@ const ExchangeDetails = () => {
     };
 
   return (
-    <SafeAreaView className='bg-primary h-full flex flex-col'>
+    <SafeAreaView className='bg-primary mt-8 h-full flex flex-col'>
         <KeyboardAvoidingView
             behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
             keyboardVerticalOffset={Platform.OS === 'ios' ? 80 : 0}
@@ -151,7 +151,7 @@ const ExchangeDetails = () => {
                         title={`You send (${selectedOffer?.data.payin.currencyCode})`}
                         placeholder={`Enter amount in (${selectedOffer?.data.payin.currencyCode})`}
                         value={sendDetails.amount}
-                        handleChangeText={(e) => {
+                        handleChangeText={(e: any) => {
                         
                         convertAmount(e)
                         }}
@@ -187,7 +187,7 @@ const ExchangeDetails = () => {
                                     title={method.requiredPaymentDetails.properties[details].title}
                                     placeholder={method.requiredPaymentDetails.properties[details].description}
                                     value={requiredFields[details] || ''}
-                                    handleChangeText={(e) => handleDynamicFieldChange(details, e)}
+                                    handleChangeText={(e: any) => handleDynamicFieldChange(details, e)}
                             
                                 />
                                 ))
@@ -225,7 +225,7 @@ const ExchangeDetails = () => {
 
                         <View className="flex-row justify-between mx-2">
                             {
-                                isSubmitting ? <View className='flex-row justify-center'>
+                                isSubmitting ? <View className='flex-col justify-center'>
                                     <ActivityIndicator size="large" color="#334b57" /> 
                                 </View>:
                                 <>

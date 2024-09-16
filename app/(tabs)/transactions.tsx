@@ -163,7 +163,7 @@ const TransactionHistoryScreen: React.FC = () => {
     };
   
     return (
-        <View>
+        <View className='h-full'>
             <FlatList
             className='bg-white'
                 data={filterTransactions(transactions)}
