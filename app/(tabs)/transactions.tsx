@@ -4,6 +4,8 @@ import { cancelExchangeOrder, createExchangeOrder, fetchExchanges } from '@/lib/
 import { BottomSheetModal, BottomSheetModalProvider, BottomSheetView } from '@gorhom/bottom-sheet';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { View, Text, FlatList, ActivityIndicator, RefreshControl, TouchableOpacity, Alert } from 'react-native';
+import FeedbackModal from '../feedback';
+import CustomButton from '@/components/CustomButton';
 
 
 const TransactionHistoryScreen: React.FC = () => {
@@ -23,6 +25,7 @@ const TransactionHistoryScreen: React.FC = () => {
     const bottomSheetModalRef = useRef<BottomSheetModal>(null);
     
     const snapPoints = useMemo(() => ['50%', '100%'], []);
+    const [isFeedbackModalVisible, setFeedbackModalVisible] = useState(false);
 
     useEffect(() => {
       fetchTransactions();
@@ -54,13 +57,18 @@ const TransactionHistoryScreen: React.FC = () => {
         bottomSheetModalRef.current?.present();
     }, []);
 
+    const closeFeedbackModal = () => {
+        setFeedbackModalVisible(false);
+        // setCompletedTransaction(null);
+      };
+
     const getName = (item: Transaction): string => {
         let name;
         for (let i = 0; i < MOCKPFI.length; i++) {
-            if (item.metadata.kind === "quote") {
+            if (item?.metadata.kind === "quote") {
                 if (MOCKPFI[i].did === item.metadata.from)
                     name = MOCKPFI[i].name
-            } else if (item.metadata.kind === "order") {
+            } else if (item?.metadata.kind === "order") {
                 if (MOCKPFI[i].did === item.metadata.to) {
                     name = MOCKPFI[i].name
                 }
@@ -244,6 +252,28 @@ const TransactionHistoryScreen: React.FC = () => {
                             <Text>No transaction selected</Text>
                             )}
                         </View>
+
+                        {   selectedTransaction?.metadata?.kind! === 'order' &&
+                            getOrderStatus(selectedTransaction?.metadata.exchangeId as string) === 'SUCCESS' ?
+                                <View className=''>
+
+                                    <CustomButton
+                                        title='Give Feedback'
+                                        handlePress={() => setFeedbackModalVisible(true)}
+                                        containerStyles='mx-8'
+                                    />
+                                </View>
+                                    : <></>
+                        }
+                        <FeedbackModal
+                            visible={isFeedbackModalVisible}
+                            onClose={closeFeedbackModal}
+                            pfiName={getName(selectedTransaction as Transaction)}
+        //   transactionId={completedTransaction.metadata.id}
+        //   pfiName={getName(completedTransaction)bg-gray-300 bg-opacity-50
+
+        //   } 
+        />
                     </BottomSheetView>
             </BottomSheetModal>
         </BottomSheetModalProvider>
