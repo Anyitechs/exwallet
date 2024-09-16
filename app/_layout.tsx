@@ -43,7 +43,7 @@ export default function RootLayout() {
         <Stack>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="index" options={{ headerShown: false }}/>
-          <Stack.Screen name="Exchange Details" options={{ headerShown: false }}/>
+          <Stack.Screen name="exchangeDetails" options={{ headerShown: false }}/>
           <Stack.Screen name="+not-found" />
         </Stack>
       </GlobalProvider>

@@ -5,8 +5,8 @@ import React, { useState } from 'react'
 type InputProps = {
     title: string,
     value?: string,
-    placeholder: string,
-    handleChangeText: any,
+    placeholder?: string,
+    handleChangeText?: any,
     otherStyles?: string,
     readOnly?: boolean,
     numberInput?: boolean,

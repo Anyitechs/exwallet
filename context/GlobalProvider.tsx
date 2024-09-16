@@ -45,6 +45,8 @@ export const GlobalProvider: React.FC<ContextProviderProps> = ({ children }) => 
 
     const getUserID = async () => {
         const userId = await getItem("userId");
+        const did = await getItem("did");
+        const vc = await getItem("vc");
         dispatch({ type: "SET_USER_ID", payload: userId });
     };
 

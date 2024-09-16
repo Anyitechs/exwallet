@@ -91,6 +91,7 @@ export default function HomeScreen() {
           {
             MOCKPFI && MOCKPFI.map((item, index) => (
               <BottomSheet
+              key={index}
               ref={ref => (bottomSheetRefs.current[index] = ref)}
               index={-1}
               snapPoints={snapPoints}
@@ -103,15 +104,17 @@ export default function HomeScreen() {
             <View className="flex-col mx-8">
             {item.offerings.map((offer, index) => (
               <View key={uuidv4()} className="flex-row justify-center mr-3 mb-2 bg-gray-100 px-2 py-1 rounded-full">
-                <MaterialCommunityIcons 
+                {/* <MaterialCommunityIcons 
               name={currencyIcons[offer.from] || "currency-usd"} 
               size={20} 
-            />
+            /> */}
                 <Text className='text-sm text-gray-700 font-pmedium'>
-                  {offer.from} → <MaterialCommunityIcons 
+                  {offer.from} {' '} → {' '}
+                  {/* <MaterialCommunityIcons 
               name={currencyIcons[offer.to] || "currency-usd"} 
               size={20} 
-            /> {offer.to}
+            />  */}
+            {offer.to}
                 </Text>
               </View>
             ))}
