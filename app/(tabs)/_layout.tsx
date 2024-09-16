@@ -1,9 +1,10 @@
-import { Tabs } from 'expo-router';
+import { Tabs, router } from 'expo-router';
 import React from 'react';
 
 import { TabBarIcon } from '@/components/navigation/TabBarIcon';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
+import { TouchableOpacity } from 'react-native';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -21,12 +22,15 @@ export default function TabLayout() {
         },
       }}>
       <Tabs.Screen
-        name="index"
+        name="home"
         options={{
           title: 'Home',
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
           ),
+          headerRight: () => <TouchableOpacity className='mr-4' onPress={() => router.push("/notification") }>
+            <TabBarIcon name='notifications-outline' />
+          </TouchableOpacity>
         }}
       />
       <Tabs.Screen
@@ -35,6 +39,16 @@ export default function TabLayout() {
           title: 'Exchange',
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'swap-horizontal' : 'swap-horizontal-outline'} 
+            color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="transactions"
+        options={{
+          title: 'Transactions',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name={focused ? 'receipt' : 'receipt-outline'} 
             color={color} />
           ),
         }}
