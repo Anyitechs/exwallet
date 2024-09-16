@@ -56,6 +56,12 @@ ExWallet currently have the following functionalities powered by the tbDex proto
 ### Screenshots of the app
 ![Group 1](https://github.com/user-attachments/assets/5d4e09dd-7b04-4c18-b939-9c2df9ac3c23)
 
+### ExWallet in action
+
+
+https://github.com/user-attachments/assets/b3c26d32-1a79-449a-add6-d324452ef583
+
+
 
 ### Design decision
 - Profitability: ExWallet will make profit off transactions (charging a tiny percentage to complete each transaction), in-app advertisements and partnerships with PFIs that will bring commissions for matching customers with them.
